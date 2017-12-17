@@ -69,8 +69,7 @@ class login extends CI_Controller {
             $this->db->where('email', $this->input->post('txtemail'));
             $this->db->where('password', $this->input->post('txtpwd'));
             $data = $this->db->get('users')->row();
-//            print_r($data);
-//            die();
+           
             if (count($data) == 1) {
                 $todayDate = date_create(date('Y/m/d'));
 
@@ -85,14 +84,17 @@ class login extends CI_Controller {
                 $expireDate = date_create(date("Y/m/d", strtotime($row->activation_date . "+" . $plan->duration)));
                 $diff = date_diff($todayDate, $expireDate, false);
                 $str = $diff->format("%R%a");
+
                 if (substr($str, 0, 1) == "-") {
                     $this->load->view("errorExpire");
                     return;
                 } else {
+                    
                     if ($data->IsActivated == "1") {
+                        $data = (Array)$data;
                         $this->session->set_userdata($data);
                         redirect(base_url() . "index.php/user/");
-                        //echo "success";
+                        
                     } else {
                         //echo "Block";
                         $this->load->view("errorBlock");
