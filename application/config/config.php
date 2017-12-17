@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/EmailMarketing/';
+$config['base_url']	= 'http://18.217.154.160/email-marketing/';
 
 /*
 |--------------------------------------------------------------------------
