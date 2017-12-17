@@ -1,6 +1,6 @@
 <?php
 
-class user extends CI_Controller {
+class User extends CI_Controller {
 
     private $data = array();
 
@@ -1000,6 +1000,7 @@ class user extends CI_Controller {
     //Export Subscriber data
     public function exportSubscriber() {
         try {
+			
             $this->db->where("user_id", $this->session->userdata('id'));
             $query = $this->db->get("subscriber");
 
@@ -1040,7 +1041,7 @@ class user extends CI_Controller {
             header('Content-Type: application/vnd.ms-excel');
             header('Content-Disposition: attachment;filename="Subscriber_' . date('dMy') . '.xls"');
             header('Cache-Control: max-age=0');
-
+			
             $objWriter->save('php://output');
         } catch (Exception $e) {
             echo $e->getMessage();

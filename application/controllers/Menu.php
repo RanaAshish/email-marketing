@@ -1,9 +1,9 @@
 <?php
 
-class menu extends CI_Controller {
+class Menu extends CI_Controller {
 
     public function index() {
-        $this->data["page"] = "home";
+	$this->data["page"] = "home";
         $this->load->view("welcome_message",$this->data);
     }
 

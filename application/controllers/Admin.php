@@ -1,6 +1,6 @@
 <?php
 
-class admin extends CI_Controller {
+class Admin extends CI_Controller {
 
     private $data = array();
 
